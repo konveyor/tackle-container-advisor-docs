@@ -1,0 +1,159 @@
+<h1 id="tcas-knowledge-base">TCA’s Knowledge Base</h1>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<h5 id="install-sqlite3">Install sqlite3</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. https://www.sqlite.org/download.html
+</code></pre></div></div>
+
+<h3 id="entity-relationship-in-tcas-knowledge-base">Entity-Relationship in TCA’s Knowledge Base</h3>
+
+<p>We represent the knowledge base in terms of a database. Below we provide an entity-relationship diagram.</p>
+
+<p><img src="../images/ER_diagram.png" alt="ER_DIAGRAM" /></p>
+
+<h3 id="setting-up-tcas-knowledge-base">Setting up TCA’s Knowledge Base</h3>
+
+<h5 id="generate-the-db-file-from-the-sql-file">Generate the .db file from the .sql file.</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. cd db/
+2. cat 1.0.4.sql | sqlite3 1.0.4.db``
+</code></pre></div></div>
+
+<h5 id="download-dbeaver-community-tool-from-the-link-below">Download DBeaver Community tool from the link below</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. https://dbeaver.io/
+</code></pre></div></div>
+
+<h5 id="set-the-db-file-path-to-dbeaver-to-view-tables-and-data-to-set-right-click-on-database-navigator-to-choose-create---connection---sqlite-then-set-the-path-as-follows-by-providing-the-absolute-path-of-the-db-file">Set the .db file path to DBeaver to view tables and data. To set right click on Database Navigator to choose <em>create</em> -&gt; <em>connection</em> -&gt; <em>SQLite</em>. Then set the path as follows by providing the absolute path of the .db file</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Path: /&lt;path&gt;/1.0.4.db
+</code></pre></div></div>
+
+<h3 id="table-details">Table Details</h3>
+
+<p><strong>1. entity_types</strong></p>
+
+<h5 id="this-contains-all-the-entity-types-present-in-our-taxonomy-under-each-entity-type-we-define-entities-for-example-the-os-entity-type-contains-the-linuxredhat-linux-as-an-entity">This contains all the entity types present in our taxonomy. Under each entity type we define entities. For example, the OS entity type contains the Linux|RedHat Linux as an entity.</h5>
+
+<p><img src="../images/entity_types.png" alt="Entity_Types" /></p>
+
+<h5 id="a-new-entry-can-be-added-as">A new entry can be added as</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INSERT INTO entity_types(entity_type_name) VALUES(?)
+</code></pre></div></div>
+
+<p><strong>2. entities</strong></p>
+
+<h5 id="this-contains-all-the-named-entities-along-with-their-types-and-mappings-to-wikidata-or-dbpedia-the-scores-are-obtained-based-on-an-entity-linking-algorithm">This contains all the named entities along with their types and mappings to Wikidata or DBPedia. The scores are obtained based on an entity linking algorithm.</h5>
+
+<p><img src="../images/entities.png" alt="Entities" /></p>
+
+<h5 id="a-new-entry-can-be-added-as-1">A new entry can be added as</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INSERT INTO entities(entity_name, entity_type_id, external_link) VALUES(?,?,?)
+</code></pre></div></div>
+
+<h5 id="for-external-link-use-the-following-format">For external link use the following format</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'name': '', 'qid': '&lt;QID&gt;', 'url': 'https://www.wikidata.org/wiki/&lt;QID&gt;', 'score': 1}
+</code></pre></div></div>
+
+<h5 id="the-qid-can-for-a-named-enitity-can-be-obtained-from">The QID can for a named enitity can be obtained from</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://www.wikidata.org/wiki/Wikidata:Main_Page
+</code></pre></div></div>
+
+<p><strong>3. entity mentions</strong></p>
+
+<h5 id="this-contains-mappings-of-raw-mentions-with-their-entities-each-entity-could-have-multiple-mentions-for-example-apache-tomcat-can-be-called-as-tomcat-or-apache-tomcat">This contains mappings of raw mentions with their entities. Each entity could have multiple mentions. For example, Apache Tomcat can be called as Tomcat or Apache Tomcat.</h5>
+
+<p><img src="../images/entity_mentions.png" alt="Entity_Mentions" /></p>
+
+<h5 id="a-new-entry-can-be-added-as-2">A new entry can be added as</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INSERT INTO entity_mentions(entity_mention_name, entity_type_id, entity_id) VALUES(?,?,?)
+</code></pre></div></div>
+
+<p><strong>4. entity relations</strong></p>
+
+<h5 id="this-contains-mappings-of-entities-based-on-their-compatibilities-for-example-a-relation-might-exists-between-linux-and-apache-tomcat-which-suggest-apache-tomcat-is-compatible-with-different-variants-of-linux-such-as-redhat-linux-ubuntu-centos-and-so-on">This contains mappings of entities based on their compatibilities. For example, a relation might exists between Linux|* and Apache Tomcat which suggest Apache Tomcat is compatible with different variants of Linux such as RedHat Linux, Ubuntu, CentOS and so on.</h5>
+
+<p><img src="../images/entity_relations.png" alt="Entity_Relations" /></p>
+
+<h5 id="a-new-entry-can-be-added-as-3">A new entry can be added as</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INSERT INTO entity_relations(entity_parent_type_id, entity_parent_id, entity_child_type_id, entity_child_id, COTS) VALUES(?,?,?,?,?)
+</code></pre></div></div>
+
+<p><strong>5. docker base os images</strong></p>
+
+<h5 id="this-contains-docker-specific-base-os-images-for-example-redhat-linux-along-with-its-mapping-a-dockerhub-image">This contains Docker specific base OS images. For example, RedHat Linux along with its mapping a DockerHub image.</h5>
+
+<p><img src="../images/docker_baseos.png" alt="Docker_baseos_images" /></p>
+
+<h5 id="a-new-entry-can-be-added-as-4">A new entry can be added as</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INSERT INTO docker_baseos_images(container_name, OS, Docker_URL, Notes, CertOfImageAndPublisher, Certification_Status, OfficialImage, VerifiedPublisher, OpenShift_Correspondent_Image_URL, OpenShiftStatus) VALUES(?,?,?,?,?,?,?,?,?,?)
+</code></pre></div></div>
+
+<p><strong>6. openshift base os images</strong></p>
+
+<h5 id="this-contains-openshift-specific-base-os-images-for-example-redhat-linux-along-with-its-mapping-a-openshift-image">This contains Openshift specific base OS images. For example, RedHat Linux along with its mapping a OpenShift image.</h5>
+
+<p><img src="../images/OS_baseos.png" alt="Openshift_baseos_images" /></p>
+
+<h5 id="a-new-entry-can-be-added-as-5">A new entry can be added as</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INSERT INTO openshift_baseos_images(container_name, OS, OpenShift_Correspondent_Image_URL, Notes, OpenShiftStatus, DockerImageType) VALUES(?,?,?,?,?,?)
+</code></pre></div></div>
+
+<p><strong>7. docker images</strong></p>
+
+<h5 id="this-contains-docker-specific-images-for-example-apache-tomcat-long-with-its-mapping-a-dockerhub-image">This contains Docker specific images. For example, Apache Tomcat long with its mapping a DockerHub image.</h5>
+
+<p><img src="../images/docker_images.png" alt="Docker_images" /></p>
+
+<h5 id="a-new-entry-can-be-added-as-6">A new entry can be added as</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INSERT INTO docker_images(container_name, OS, lang, lib, app, app_server, plugin, runlib, runtime, Docker_URL, Notes, CertOfImageAndPublisher) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)
+</code></pre></div></div>
+
+<p><strong>8. openshift images</strong></p>
+
+<h5 id="this-contains-openshift-specific-images-for-example-apache-tomcat-long-with-its-mapping-a-openshift-image">This contains OpenShift specific images. For example, Apache Tomcat long with its mapping a OpenShift image.</h5>
+
+<p><img src="../images/OS_images.png" alt="Openshift_images" /></p>
+
+<h5 id="a-new-entry-can-be-added-as-7">A new entry can be added as</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INSERT INTO openshift_images(container_name, OS, lang, lib, app, app_server, plugin, runlib, runtime, Docker_URL, Notes, CertOfImageAndPublisher) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)
+</code></pre></div></div>
+
+<p><strong>9. entity versions</strong></p>
+<h5 id="this-contains-versions-and-licensing-costs-for-all-entities">This contains versions and licensing costs for all entities.</h5>
+
+<p><img src="../images/entity_versions.png" alt="entity_versions" /></p>
+
+<h5 id="a-new-entry-can-be-added-as-8">A new entry can be added as</h5>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    INSERT INTO entity_versions (id, entity_id, version, release_date, end_date, cost)  VALUES (?,?,?,?,?,?)
+</code></pre></div></div>
+
+<p><strong>10. docker environment variable</strong></p>
+<h5 id="this-contains-environment-variables-for-all-docker-images">This contains environment variables for all docker images.</h5>
+
+<p><img src="../images/docker_env.png" alt="Docker_env_var" /></p>
+
+<h5 id="a-new-entry-can-be-added-as-9">A new entry can be added as</h5>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INSERT  INTO docker_environment_variables(Environment_Variables, Container_Name, Required, Default_Values) VALUES(?,?,?,?)
+</code></pre></div></div>
+
+<p><strong>11. operator images</strong></p>
+<h5 id="this-contains-operator-specific-images-for-example-postgresql-along-with-its-mapping-a-operator-image">This contains operator specific images. For example, Postgresql along with its mapping a operator image</h5>
+
+<p><img src="../images/operator_images.png" alt="operators" /></p>
+
+<h5 id="a-new-entry-can-be-added-as-10">A new entry can be added as</h5>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INSERT INTO operator_images(container_name, OS, lang, lib, app, app_server, plugin, runlib, runtime, Operator_Correspondent_Image_URL, Operator_Repository, Other_Operators) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)
+</code></pre></div></div>
