@@ -9,33 +9,43 @@ permalink: /
 # Tackle Container Advisor (TCA)
 
 ## Purpose
-
-TCA takes client applications as a natural language description and recommends whether client applications can be containerized. For example, a client can provide the application description as the following.
-
+TCA provides APIs to standardize natural language description of technology stack components, cluster a portfolio of technology stacks into similar technology stack groups, match technology stacks to docker, openshift or operator catalog images. 
 ```
 1. App1: rhel, db2, java, tomcat
+2. App2: .net, java, oracle db
+3. App3: dot net, java, oracle dbms
 ```
-
 
 TCA takes the following steps to recommend the containerization.
 
-1. **Assessment**: It assesses the application to standardize the inputs to relevant named entities present in our knowledge base. For details on the knowledge base please check the *db* folder. For example, the inputs in *App1* get mapped as the following named entities.
+1. **Standardize**: Standardize natural language inputs to relevant named entities of technology stacks present in our knowledge base. For details on the knowledge base please check the *db* folder. For example, the inputs in *App1,App2,App3* get mapped as the following named entities.
 
 ```
 1. App1: rhel: Linux|RedHat Linux, db2: DB2, java: Java, tomcat: Apache Tomcat
+2. App2: .net: .NET, java: Java, oracle db: Oracle DB
+3. App3: dot net: .NET, jave: Java, oracle dbms: Oracle DB
 ```
 
-2. **Containerization**: First, it recommends whether *App1* can be containerized, partially containerized, or kept as it is. Then if App1 is recommended as containerized or partially containerized, TCA generates container images based on DockerHub or Openshift. For example, if a user decides to generate DockerHub related images, then TCA generates the following images.
+2. **Clustering**: Cluster the standardized technology stack components into groups of similar technology stacks. For example, the standardized technology stacks for *App1,App2,App3* get clustered into the two technology stack clusters.
 
 ```
-1. tomcat|https://hub.docker.com/_/tomcats
-2. db2|https://hub.docker.com/r/ibmcom/db2
+1. Cluster1: {App1}
+2. Cluster2: {App2, App3}
+```
+
+2. **Containerize**: Determines whether a technology stack is fully containerizable, partially containerizable or not containerizableat all. If a technology stack is recommended as fully or partially containerizable, it also generates container images based on DockerHub or Openshift image catalogs. It is also possible to provide custom user-defined catalogs for matching to catalog images. For example, if a user decides to generate DockerHub related images, then TCA generates the following images.
+
+```
+1. Cluster1: tomcat|https://hub.docker.com/_/tomcats
+2. Cluster2: db2|https://hub.docker.com/r/ibmcom/db2
 ```
 
 For OpenShift, TCA generates the following images.
 
-	1. tomcat|https://access.redhat.com/containers/#/registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift
-	2. db2|https://access.redhat.com/containers/#/cp.stg.icr.io/cp/ftm/base/ftm-db2-base
+```
+1. Cluster1: tomcat|https://access.redhat.com/containers/#/registry.access.redhat.com/jboss-webserver-3/webserver31-tomcat8-openshift
+2. Cluster2: db2|https://access.redhat.com/containers/#/cp.stg.icr.io/cp/ftm/base/ftm-db2-base
+```
 
 ## TCA Pipeline
 
