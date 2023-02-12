@@ -26,7 +26,7 @@ vagrant ssh
 cd /vagrant
 ```
 
-Once you are inside the virtual machine and in the `/vagrant` folder you can continue with the instructions to [Running the TCA Backend API](../README.md#running-the-tca-backend-api).
+Once you are inside the virtual machine and in the `/vagrant` folder you can continue with the instructions to [Running the TCA Backend API](setup.md).
 
 ## Using Visual Studio Code and Docker
 
@@ -57,7 +57,7 @@ Note that there is a period `.` after the `code` command. This tells Visual Stud
 
 Once the environment is loaded you should be placed at a `bash` prompt in the `/app` folder inside of the development container. This folder is mounted to the current working directory of your repository on your computer. This means that any file you edit while inside of the `/app` folder in the container is actually being edited on your computer. You can then commit your changes to `git` from either inside or outside of the container.
 
-You can continue with the instructions to [Running the TCA Backend API](../README.md#running-the-tca-backend-api).
+You can continue with the instructions to [Running the TCA Backend API](setup.md).
 
 ## Installing Python 3 manually
 
@@ -85,4 +85,4 @@ git clone https://github.com/konveyor/tackle-container-advisor.git
 cd tackle-container-advisor
 ```
 
-You can continue with the instructions to [Running the TCA Backend API](../README.md#running-the-tca-backend-api).
+You can continue with the instructions to [Running the TCA Backend API](setup.md).
