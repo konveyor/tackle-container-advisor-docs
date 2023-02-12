@@ -1,9 +1,10 @@
 ---
 layout: default
 title: Entity Standardizer
-nav_order: 6
+nav_order: 4
+description: "Entity Standardizer"
+published: true
 ---
-
 # Entity Standardizer
 Entity standardizer is a core capability of TCA that is used to recognize standardized entities of technology
 stack components from a natural language input. The models used for entity standardization are available for use
@@ -53,7 +54,7 @@ in *config/tca/tfidf.ini* and *config/tca/siamese.ini*
 # Inference with zero-shot models
 Entity standardizer package contains the following zero-shot mode:
 
-1. *wdapi* - An unsupervised approach based on wikidata autocomplete api.
+*wdapi* - An unsupervised approach based on wikidata autocomplete api.
 
 Use the following steps to install entity standardizer package and inference 
 with zero-shot models. The entity standardizer package requires python >= 3.6 environment.

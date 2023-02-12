@@ -1,8 +1,11 @@
 ---
 layout: default
 title: Knowledge Base
-nav_order: 4
+nav_order: 6
+description: "Knowledge Base"
+published: true
 ---
+
 # TCA's Knowledge Base
 
 ### Prerequisites
