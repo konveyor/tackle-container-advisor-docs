@@ -18,7 +18,7 @@ TCA provides APIs to standardize natural language description of technology stac
 
 TCA takes the following steps to recommend the containerization.
 
-1. **Standardize**: Standardize natural language inputs to relevant named entities of technology stacks present in our knowledge base. For details on the knowledge base please check the *db* folder. For example, the inputs in *App1,App2,App3* get mapped as the following named entities.
+**Standardize**: Standardize natural language inputs to relevant named entities of technology stacks present in our knowledge base. For details on the knowledge base please check the *db* folder. For example, the inputs in *App1,App2,App3* get mapped as the following named entities.
 
 ```
 1. App1: rhel: Linux|RedHat Linux, db2: DB2, java: Java, tomcat: Apache Tomcat
@@ -26,14 +26,14 @@ TCA takes the following steps to recommend the containerization.
 3. App3: dot net: .NET, jave: Java, oracle dbms: Oracle DB
 ```
 
-2. **Clustering**: Cluster the standardized technology stack components into groups of similar technology stacks. For example, the standardized technology stacks for *App1,App2,App3* get clustered into the two technology stack clusters.
+**Clustering**: Cluster the standardized technology stack components into groups of similar technology stacks. For example, the standardized technology stacks for *App1,App2,App3* get clustered into the two technology stack clusters.
 
 ```
 1. Cluster1: {App1}
 2. Cluster2: {App2, App3}
 ```
 
-2. **Containerize**: Determines whether a technology stack is fully containerizable, partially containerizable or not containerizableat all. If a technology stack is recommended as fully or partially containerizable, it also generates container images based on DockerHub or Openshift image catalogs. It is also possible to provide custom user-defined catalogs for matching to catalog images. For example, if a user decides to generate DockerHub related images, then TCA generates the following images.
+**Containerize**: Determines whether a technology stack is fully containerizable, partially containerizable or not containerizableat all. If a technology stack is recommended as fully or partially containerizable, it also generates container images based on DockerHub or Openshift image catalogs. It is also possible to provide custom user-defined catalogs for matching to catalog images. For example, if a user decides to generate DockerHub related images, then TCA generates the following images.
 
 ```
 1. Cluster1: tomcat|https://hub.docker.com/_/tomcats

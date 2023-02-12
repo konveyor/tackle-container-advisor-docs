@@ -4,7 +4,7 @@ title: Setup and Running TCA
 nav_order: 3
 ---
 
-1. Running TCA service as a container
+## Running TCA service as a container
 
 The simplest way of running TCA api as a service is by running the publicly available TCA image
 inside Openshift or Docker.
@@ -17,7 +17,7 @@ or
 docker run -p 8000:8000 quay.io/konveyor/tackle-container-advisor:latest
 ```
 
-2. Running TCA using Command Line Interface (CLI)
+## Running TCA using Command Line Interface (CLI)
 
 ```
 usage: tca_cli.py [-h] -input_json INPUT_JSON -operation OPERATION -catalog CATALOG -output_json OUTPUT_JSON
@@ -31,7 +31,7 @@ optional arguments:
   -output_json OUTPUT_JSON  output from the application in json format
 ```
 
-3. Running TCA service inside a Virtual Machine (VM)
+## Running TCA service inside a Virtual Machine (VM)
 ```
 vagrant up
 vagrant ssh
@@ -44,7 +44,7 @@ bash run.sh
 bash deploy.sh
 ```
 
-# Building TCA from source 
+## Building TCA from source 
 
 Requires Python >= 3.6 environment. You cannot run this code without having 
 a proper Python environment first. We recommend that you follow the 
@@ -67,7 +67,7 @@ waitress may be used instead.
 waitress-serve --listen=*:8000 service:app
 ```
 
-# Run a performance test for TCA service
+## Run a performance test for TCA service
 A performance test measures the response time of TCA service under
 various load conditions. Before running
 performance test, update *config/test.ini* with the hostname
@@ -77,9 +77,7 @@ and port where TCA service has been deployed
 python test/performance/run_payload.py
 ```
 
-## Performance Benchmarking
-
-- TCA Api was run as a podman container on IntelCore i9-10885H CPU @ 2.40GHz with 8 Cores, 16 Logical Processors with 4GB Memory limit
+The table below summarizes performance testing results for TCA service api. The service was run as a podman container on IntelCore i9-10885H CPU @ 2.40GHz with 8 Cores, 16 Logical Processors with 4GB Memory limit.
 	
 <table>
 <tr>
@@ -114,19 +112,19 @@ python test/performance/run_payload.py
 </tr>
 </table>
 
-# Running TCA with a new version of Knowledge Base
+## Running TCA with a new version of Knowledge Base
 
 Please perform the following steps.
 
-1. Replace the existing .sql file with the new <new_db>.sql file in the db folder
+1. Replace the existing .sql file with the new *new_db*.sql file in the db folder
 
 2. Change the *common.ini* file in the config folder as follows
 
-    version = <new_db>
+    version = *new_db*
 
 3. Modify the *setup.sh* and *clean.sh* scripts to reflect the version accordingly.
     
-    version=<new_db>
+    version=*new_db*
 
 4. Re-run *setup.sh* and then deploy the service.
 

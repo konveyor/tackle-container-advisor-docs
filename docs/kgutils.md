@@ -1,4 +1,4 @@
-# TCA's Knowledge Base Utilities
+# Knowledge Base Utilities
 ## Table of Contents
 1. [Generate JSONS and documentation](#How-to-use)
 2. [Image Search](#TCA-Image-Search)
