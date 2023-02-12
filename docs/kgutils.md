@@ -1,3 +1,11 @@
+---
+layout: default
+title: Knowledge Base Utilities
+nav_order: 7
+description: "Knowledge Base Utilities"
+published: true
+---
+
 # Knowledge Base Utilities
 ## Table of Contents
 1. [Generate JSONS and documentation](#How-to-use)

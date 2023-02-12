@@ -1,7 +1,9 @@
 ---
 layout: default
-title: Setup and Running TCA
-nav_order: 3
+title: Run TCA
+nav_order: 2
+description: "Run TCA"
+published: true
 ---
 
 ## Running TCA service as a container

@@ -1,9 +1,10 @@
 ---
 layout: default
 title: Entity Standardizer
-nav_order: 6
+nav_order: 4
+description: "Entity Standardizer"
+published: true
 ---
-
 # Entity Standardizer
 Entity standardizer is a core capability of TCA that is used to recognize standardized entities of technology
 stack components from a natural language input. The models used for entity standardization are available for use

@@ -1,3 +1,11 @@
+---
+layout: default
+title: Developer Guide
+nav_order: 8
+description: "Developer Guide"
+published: true
+---
+
 # Developer Guide
 
 ## Environment Setup

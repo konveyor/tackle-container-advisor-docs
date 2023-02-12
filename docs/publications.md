@@ -1,7 +1,9 @@
 ---
 layout: default
 title: References
-nav_order: 8
+nav_order: 10
+description: "References"
+published: true
 ---
 
 ## Publications
