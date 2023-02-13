@@ -16,7 +16,6 @@ inside Openshift or Docker.
 podman run -p 8000:8000 quay.io/konveyor/tackle-container-advisor:latest
 ```
 or
-{% include code_header.html %}
 ```
 docker run -p 8000:8000 quay.io/konveyor/tackle-container-advisor:latest
 ```
@@ -36,7 +35,6 @@ optional arguments:
 ```
 
 ## Running TCA service inside a Virtual Machine (VM)
-{% include code_header.html %}
 ```
 vagrant up
 vagrant ssh
@@ -45,7 +43,6 @@ bash run.sh
 ```
 
 ## Deploy TCA image as a container inside Redhat Openshift Container Platform.
-{% include code_header.html %}
 ```
 bash deploy.sh
 ```
@@ -58,20 +55,17 @@ instructions in the [Developer's Guide](docs/development.md) before
 proceeding further. Follow the steps below once the environment has
 been setup correctly.
 
-{% include code_header.html %}
 ```
 bash setup.sh
 ```
 Make sure *setup.sh* finishes without any errors. You should 
 see a message at the end of the run suggesting TCA finished successfully. 
 
-{% include code_header.html %}
 ```
 gunicorn --workers=2 --threads=500 --timeout 300 service:app
 ```
 Guincorn may not be supported on some windows systems. In that case, 
 waitress may be used instead.
-{% include code_header.html %}
 ```
 waitress-serve --listen=*:8000 service:app
 ```
@@ -82,7 +76,6 @@ various load conditions. Before running
 performance test, update *config/test.ini* with the hostname
 and port where TCA service has been deployed
 
-{% include code_header.html %}
 ```
 python test/performance/run_payload.py
 ```
