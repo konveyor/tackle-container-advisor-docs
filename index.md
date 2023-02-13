@@ -21,9 +21,9 @@ TCA takes the following steps to recommend the containerization.
 **Standardize**: Standardize natural language inputs to relevant named entities of technology stacks present in our knowledge base. For details on the knowledge base please check the *db* folder. For example, the inputs in *App1,App2,App3* get mapped as the following named entities.
 
 ```
-1. App1: rhel: Linux|RedHat Linux, db2: DB2, java: Java, tomcat: Apache Tomcat
+1. App1: rhel: RedHat Enterprise Linux, db2: DB2, java: Java, tomcat: Apache Tomcat
 2. App2: .net: .NET, java: Java, oracle db: Oracle DB
-3. App3: dot net: .NET, jave: Java, oracle dbms: Oracle DB
+3. App3: dot net: .NET, java: Java, oracle dbms: Oracle DB
 ```
 
 **Clustering**: Cluster the standardized technology stack components into groups of similar technology stacks. For example, the standardized technology stacks for *App1,App2,App3* get clustered into the two technology stack clusters.
