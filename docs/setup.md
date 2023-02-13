@@ -11,7 +11,6 @@ published: true
 The simplest way of running TCA api as a service is by running the publicly available TCA image
 inside Openshift or Docker.
 
-{% include code_header.html %}
 ```
 podman run -p 8000:8000 quay.io/konveyor/tackle-container-advisor:latest
 ```
