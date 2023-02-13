@@ -41,7 +41,7 @@ cd /vagrant
 bash run.sh
 ```
 
-4. Deploy TCA image as a container inside Redhat Openshift Container Platform.
+## Deploy TCA image as a container inside Redhat Openshift Container Platform.
 ```
 bash deploy.sh
 ```
