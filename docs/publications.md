@@ -8,6 +8,8 @@ published: true
 
 ## Publications
 
+* Jiaqing Yuan, Michele Merler, Mihir Choudhury, Raju Pavuluri, Munindar P. Singh, and Maja Vukovic. "CoSiNES: Contrastive Siamese Network for Entity Standardization.” Proceedings of the Matching Workshop at ACL , 2023.
+
 * Anup K. Kalia, Raghav Batta, Jin Xiao, Mihir Choudhury and Maja Vukovic. *ACA: Application Containerization Advisory Framework for Modernizing Legacy Applications*.  IEEE International Conference on Cloud Computing (Cloud) [Work-in-progress], sept, pages 1--3, 2021.
 
 ## Article
